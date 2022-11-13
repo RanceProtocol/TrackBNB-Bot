@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn src/index.ts",
     "build": "yarn run lint && rimraf build/ && tsc",
+    "postbuild": "copyfiles -u 1 src/assets/**/* src/previousBNBPrice.json build",
     "start": "yarn run build && node build/index.js",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
@@ -19,6 +20,7 @@
     "@types/node-cron": "^3.0.5",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",

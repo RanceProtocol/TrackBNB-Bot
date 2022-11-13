@@ -1,4 +1,5 @@
 import { createCanvas, loadImage, registerFont } from 'canvas';
+import fs from 'fs';
 import path from 'path';
 
 export const generate = async (priceText: string): Promise<Buffer> => {
@@ -13,7 +14,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
   context.textAlign = 'center';
   context.textBaseline = 'top';
   context.fillStyle = '#65350f';
-  context.font = "400px 'crimsontext' italic";
+  context.font = "700px 'crimsontext' italic";
 
   // let generatedImagebuffer: Buffer | null = null;
   const generatedImagebuffer = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'template.jpg')).then(
@@ -24,8 +25,9 @@ export const generate = async (priceText: string): Promise<Buffer> => {
       const approxFontHeight = parseInt(context.font);
 
       // Draw the text
-      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 4);
+      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 3);
 
+      fs.writeFileSync(path.join(__dirname, '..', 'assets', 'images', 'generated.png'), canvas.toBuffer('image/png'));
       // Convert the Canvas to a buffer
       return canvas.toBuffer('image/png');
     },

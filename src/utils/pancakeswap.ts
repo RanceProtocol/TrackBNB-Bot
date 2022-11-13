@@ -11,7 +11,7 @@ export const getBNBPrice = async (): Promise<string> => {
 
     const pancakeswapPairFactory = await pancakeswapPair.createFactory();
     const result = await pancakeswapPairFactory.findBestRoute('1');
-    return Number(result.bestRouteQuote.expectedConvertQuote).toFixed(2);
+    return result.bestRouteQuote.expectedConvertQuote;
   } catch (error) {
     throw error;
   }
