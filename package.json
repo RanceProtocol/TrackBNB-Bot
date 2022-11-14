@@ -41,6 +41,7 @@
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "node-cron": "^3.0.2",
+    "pm2": "^5.2.2",
     "simple-pancakeswap-sdk-with-multicall-fix": "^1.1.2",
     "twitter-api-v2": "^1.12.9"
   }

@@ -30,6 +30,7 @@ const main = async () => {
     });
   } catch (error: any) {
     console.log(error);
+    process.exit();
   }
 };
 
