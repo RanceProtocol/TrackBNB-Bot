@@ -1,4 +1,4 @@
-import { createCanvas, loadImage } from 'canvas';
+import { createCanvas, loadImage, registerFont } from 'canvas';
 import fs from 'fs';
 import path from 'path';
 
@@ -9,7 +9,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
   const context = canvas.getContext('2d');
 
   // We need to register our font file to be used in canvas
-  // registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
+  registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
   // Define the font style
   context.textAlign = 'center';
   context.textBaseline = 'top';
