@@ -1,4 +1,4 @@
-import { createCanvas, loadImage, registerFont } from 'canvas';
+import { createCanvas, deregisterAllFonts, loadImage, registerFont } from 'canvas';
 import fs from 'fs';
 import path from 'path';
 
@@ -27,6 +27,9 @@ export const generate = async (priceText: string): Promise<Buffer> => {
 
       // Draw the text
       context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 2);
+
+      // deregister fonts
+      deregisterAllFonts();
 
       fs.writeFileSync(path.join(__dirname, '..', 'assets', 'images', 'generated.png'), canvas.toBuffer('image/png'));
       // Convert the Canvas to a buffer
