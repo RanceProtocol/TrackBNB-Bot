@@ -2,10 +2,10 @@ import { createCanvas, loadImage, registerFont } from 'canvas';
 import fs from 'fs';
 import path from 'path';
 
-export const generate = async (priceText: string): Promise<Buffer> => {
-  // We need to register our font file to be used in canvas
-  registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
+// We need to register our font file to be used in canvas
+registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
 
+export const generate = async (priceText: string): Promise<Buffer> => {
   const width = 4888; // width of the image
   const height = 1396; // height of the image
   const canvas = createCanvas(width, height);
