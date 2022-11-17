@@ -17,12 +17,12 @@ const main = async () => {
     const previousPriceObj = JSON.parse(previousPriceJson);
     const difference = Number(bnbPrice) - Number(previousPriceObj.price);
     const percentageChange = (difference / Number(previousPriceObj.price)) * 100;
-    if (Math.abs(percentageChange) < 2)
-      return console.log('Price difference not upto 2% of the previously tweeted price: ', {
-        lastPriceTweeted: previousPriceObj.price,
-        currentPrice: bnbPrice,
-        priceDifference: `${percentageChange}%`,
-      });
+    // if (Math.abs(percentageChange) < 2)
+    //   return console.log('Price difference not upto 2% of the previously tweeted price: ', {
+    //     lastPriceTweeted: previousPriceObj.price,
+    //     currentPrice: bnbPrice,
+    //     priceDifference: `${percentageChange}%`,
+    //   });
     const changeType = Math.max(0, percentageChange) === 0 ? 'negative' : 'positive';
     // update the price file
     fs.writeFileSync(previousPriceFilePath, JSON.stringify({ price: bnbPrice }));
