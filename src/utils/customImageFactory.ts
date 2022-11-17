@@ -15,7 +15,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
   context.textAlign = 'center';
   context.textBaseline = 'top';
   context.fillStyle = '#65350f';
-  context.font = "600px 'crimsontext' italic";
+  context.font = "600px 'crimsontext'";
 
   // let generatedImagebuffer: Buffer | null = null;
   const generatedImagebuffer = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'template.jpg')).then(
