@@ -3,13 +3,14 @@ import fs from 'fs';
 import path from 'path';
 
 export const generate = async (priceText: string): Promise<Buffer> => {
+  // We need to register our font file to be used in canvas
+  registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
+
   const width = 4888; // width of the image
   const height = 1396; // height of the image
   const canvas = createCanvas(width, height);
   const context = canvas.getContext('2d');
 
-  // We need to register our font file to be used in canvas
-  registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
   // Define the font style
   context.textAlign = 'center';
   context.textBaseline = 'top';
