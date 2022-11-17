@@ -1,9 +1,6 @@
-import { createCanvas, loadImage, registerFont } from 'canvas';
+import { createCanvas, loadImage } from 'canvas';
 import fs from 'fs';
 import path from 'path';
-
-// We need to register our font file to be used in canvas
-registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'crimsonText-boldItalic.ttf'), { family: 'crimsontext' });
 
 export const generate = async (priceText: string): Promise<Buffer> => {
   const width = 4888; // width of the image
