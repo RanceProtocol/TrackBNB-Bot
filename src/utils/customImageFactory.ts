@@ -26,7 +26,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
       const approxFontHeight = parseInt(context.font);
 
       // Draw the text
-      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 3);
+      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 3.5);
 
       // deregister fonts
       deregisterAllFonts();
