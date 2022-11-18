@@ -8,21 +8,26 @@ import { getBNBPrice } from './utils/pancakeswap';
 import { tweetUpdate } from './utils/tweetHelper';
 
 const previousPriceFilePath = path.join(__dirname, 'previousBNBPrice.json');
+const percentageDifferenceToTweet = 0.5;
 
 const main = async () => {
-  console.log('Running job...');
+  console.log('Running bot...');
   try {
     const bnbPrice = await getBNBPrice();
     const previousPriceJson = fs.readFileSync(previousPriceFilePath, 'utf8');
     const previousPriceObj = JSON.parse(previousPriceJson);
     const difference = Number(bnbPrice) - Number(previousPriceObj.price);
     const percentageChange = (difference / Number(previousPriceObj.price)) * 100;
-    if (Math.abs(percentageChange) < 2)
-      return console.log('Price difference not upto 2% of the previously tweeted price: ', {
+    if (Math.abs(percentageChange) < percentageDifferenceToTweet) {
+      console.log(`Price difference not upto ${percentageDifferenceToTweet}% of the previously tweeted price: `);
+      console.log({
         lastPriceTweeted: previousPriceObj.price,
         currentPrice: bnbPrice,
         priceDifference: `${percentageChange}%`,
       });
+      return;
+    }
+
     const changeType = Math.max(0, percentageChange) === 0 ? 'negative' : 'positive';
     // update the price file
     fs.writeFileSync(previousPriceFilePath, JSON.stringify({ price: bnbPrice }));
