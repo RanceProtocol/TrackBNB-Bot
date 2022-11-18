@@ -15,7 +15,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
   context.textAlign = 'center';
   context.textBaseline = 'top';
   context.fillStyle = '#65350f';
-  context.font = "600px 'crimsontext'";
+  context.font = "500px 'crimsontext'";
 
   // let generatedImagebuffer: Buffer | null = null;
   const generatedImagebuffer = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'template.jpg')).then(
@@ -26,7 +26,7 @@ export const generate = async (priceText: string): Promise<Buffer> => {
       const approxFontHeight = parseInt(context.font);
 
       // Draw the text
-      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 2);
+      context.fillText(priceText, width / 2, height / 2 - approxFontHeight / 3);
 
       // deregister fonts
       deregisterAllFonts();
