@@ -8,7 +8,7 @@ import { getBNBPrice } from './utils/pancakeswap';
 import { tweetUpdate } from './utils/tweetHelper';
 
 const previousPriceFilePath = path.join(__dirname, 'previousBNBPrice.json');
-const percentageDifferenceToTweet = 0.5;
+const percentageDifferenceToTweet = 2;
 
 const main = async () => {
   console.log('Running bot...');
