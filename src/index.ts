@@ -29,8 +29,6 @@ const main = async () => {
     }
 
     const changeType = Math.max(0, percentageChange) === 0 ? 'negative' : 'positive';
-    // update the price file
-    fs.writeFileSync(previousPriceFilePath, JSON.stringify({ price: bnbPrice }));
     // generate tweet image
     const generatedImageBuffer = await generate(`$${Number(bnbPrice).toFixed(2)}`);
     await tweetUpdate({
@@ -39,12 +37,15 @@ const main = async () => {
       changeType,
       generatedImageBuffer,
     });
+
+    // update the price file
+    fs.writeFileSync(previousPriceFilePath, JSON.stringify({ price: bnbPrice }));
   } catch (error: any) {
     console.log(error);
     process.exit();
   }
 };
 
-const cronTimeString = cronTime.everyMinute();
+const cronTimeString = cronTime.every(5).minutes();
 
 cron.schedule(cronTimeString, main);
