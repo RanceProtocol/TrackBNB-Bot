@@ -20,11 +20,13 @@ const main = async () => {
     const percentageChange = (difference / Number(previousPriceObj.price)) * 100;
     if (Math.abs(percentageChange) < percentageDifferenceToTweet) {
       console.log(`Price difference not upto ${percentageDifferenceToTweet}% of the previously tweeted price: `);
-      console.log({
-        lastPriceTweeted: previousPriceObj.price,
-        currentPrice: bnbPrice,
-        priceDifference: `${percentageChange}%`,
-      });
+      console.log(
+        JSON.stringify({
+          lastPriceTweeted: previousPriceObj.price,
+          currentPrice: bnbPrice,
+          priceDifference: `${percentageChange}%`,
+        }),
+      );
       return;
     }
 
