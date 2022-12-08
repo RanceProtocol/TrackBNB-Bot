@@ -46,6 +46,6 @@ const main = async () => {
   }
 };
 
-const cronTimeString = cronTime.every(5).minutes();
+const cronTimeString = cronTime.every(2).minutes();
 
 cron.schedule(cronTimeString, main);
